@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Todo App</title>
+        <link rel="stylesheet" href="styles/todo.css">
+    </head>    
+    <body>
+      <div class="menu">
+        <div class="todo-list">
+          <input class="input" id="todo-title" type="text">
+        </div>
+        <div class="todo-list">
+          <input class="callendar" id="date-picker" type="date">
+        </div>
+        <div class="todo-list">
+          <button class="addBtn" onclick="addTodo()">Add Todo</button>
+        </div>
+      </div>
+        <div class="list" id="todo-list"></div>
+    </body>
+</html>
+<script>
+
+  //Model section
+  //If localstorage has a todos array, then use it
+  //otherwise use the default array
+  let todos;
+
+  //Retrieve localStorage
+  const savedTodos = JSON.parse(localStorage.getItem('todos'));
+  //Check if it's an array
+
+  if(Array.isArray(savedTodos)) {
+    todos = savedTodos;
+  } else {
+    todos =
+   todos = [{
+      title: 'Get groceries',
+      dueDate: '2022-12-20',
+      id: 'id1'
+    }, {
+      title: 'Wash car',
+      dueDate: '2022-12-20',
+      id: 'id2'
+    }, {
+      title: 'Make dinner',
+      dueDate: '2022-12-20',
+      id: 'id3'
+    }, {
+      title: 'Do laundry',
+      dueDate: '2022-12-20',
+      id: 'id4'
+    }];
+}
+
+  render();
+
+  //Creates todo
+  function createTodo(title, dueDate) {
+    const id = '' + new Date().getTime();
+   
+    todos.push({
+    title: title,
+    dueDate: dueDate,
+    id: id
+   });
+
+   saveTodos();
+  }
+
+  //Deletes todo
+  function removeTodo (idToDelete) {
+      todos = todos.filter( function (todo) {
+      //If the id of this todo matches idToDelete, return false
+      //for everytinh else, return true
+      if (todo.id === idToDelete) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    saveTodos();
+  }
+
+  //Saves todos in localStorage
+  function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  //Checks Todo
+  function toggleTodo (todoId, checked) {
+    todos.forEach( function (todo) {
+      if (todo.id === todoId) {
+        todo.isDone = checked;
+      }
+    });
+  }
+
+  //Controller-section
+  function addTodo() {
+    const texbox = document.getElementById('todo-title');
+    const title = texbox.value;
+   
+    const datePicker = document.getElementById('date-picker');
+    const dueDate = datePicker.value
+   
+    createTodo(title, dueDate);
+    texbox.value = '';
+    datePicker.value = '';
+    render();
+  }
+
+  function deleteTodo(event) {
+    const deleteButton = event.target;
+    const idToDelete = deleteButton.id;
+    removeTodo(idToDelete);
+    render();
+
+  }
+
+  function checkTodo(event) {
+    const checkBox = event.target;
+
+    const todoId = checkBox.dataset.todoId;
+    const checked = checkBox.checked;
+
+    toggleTodo(todoId, checked);
+    render();
+  }
+
+
+  //view-section
+  function render() {
+  //Reset our list
+
+  //Let stands for value that can be changed. For example let num = 5; => num = 6;
+  //Const stands for value that cannot be changed after its been asigned
+  
+  document.getElementById('todo-list').innerHTML = '';
+
+    todos.forEach(function(todo) {
+    //Creates div to html
+    const element = document.createElement('div');
+    //Gives the div class='element'
+    element.classList.add('element');
+    //Adds text inside created div       
+    element.innerText = todo.title + ' // ' + todo.dueDate;  
+    
+    //Creates the delete button
+    const deleteButton = document.createElement('button');
+    //Gives the button class='deleteButton'
+    deleteButton.classList.add('deleteButton');
+    deleteButton.innerText = 'X';
+    deleteButton.onclick = deleteTodo;
+    deleteButton.id = todo.id;
+    //Adds the deleteButton inside the div
+    element.appendChild(deleteButton);
+
+    //Creates the checkbox
+    const checkBox = document.createElement('input');
+    //Gives the checkbox class='checkBox'
+    checkBox.classList.add('checkBox');
+    checkBox.type = 'checkbox';
+    checkBox.onchange = checkTodo;
+    checkBox.dataset.todoId = todo.id;
+    if (todo.isDone === true) {
+      checkBox.checked = true;
+    } else {
+      checkBox.checked = false;
+    }
+    //Adds the checkbox inside the div
+    //append means it will add the element at the end of the line
+    //prepend means it will add the element at the front of the line
+    element.prepend(checkBox);
+
+    const todoList = document.getElementById('todo-list');    
+    //Creates child element inside parent aka 'body'    
+    todoList.appendChild(element);  
+                          
+  }); 
+  }
+</script>

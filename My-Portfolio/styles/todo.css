@@ -1,0 +1,81 @@
+body {
+    background-color: lightskyblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-list {
+    margin-top: 60px;
+    margin-right: 30px;
+}
+
+.callendar,
+.input {
+    height: 30px;
+    border-radius: 50px;
+    border: solid;
+    border-width: 1px;
+    padding: 8px;
+} 
+
+.addBtn {
+    height: 46px;
+    border-radius: 50px;
+    border: none;
+    padding: 8px;
+    background-color: rgb(60, 169, 236);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addBtn:hover {
+    background-color: white;
+    color: rgb(60, 169, 236);
+}
+
+.list {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.element {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: rgb(60, 169, 236);
+    color: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.deleteButton {
+    background-color: transparent;
+    border: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    margin-left: 12px;
+    height: 24px;
+    width: 24px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.deleteButton:hover {
+    background-color: white;
+    color: rgb(60, 169, 236);
+}
+

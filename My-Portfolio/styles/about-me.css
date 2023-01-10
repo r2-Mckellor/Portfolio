@@ -1,0 +1,177 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+   
+    color: rgb(69, 188, 228);
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+.rightSide {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 13%;
+    background-color: black;
+}
+
+.leftSide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13%;
+    background-color: black;
+}
+
+.header,
+.about-me,
+.my-skills,
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 400px;
+    padding-top: 130px;
+}
+
+.topbt {
+    background-color: rgb(69, 188, 228);
+    position: absolute;
+    right: 60px;
+    bottom: 20px;
+    color: white;
+    padding: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    text-decoration: none;
+}
+
+.topbt:hover {
+    background-color: white;
+    color: rgb(69, 188, 228);
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.picture {
+    border-radius: 120px;
+    margin-top: 80px;
+}
+
+.tittle {
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.buttons {
+    margin-top: 15px;
+}
+
+.shortcut {
+    background-color: rgb(69, 188, 228);
+    color: white;
+    padding: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.shortcut:hover {
+    background-color: white;
+    color: rgb(69, 188, 228);
+}
+
+.panel {
+    background-color: rgba(97, 94, 94, 0.432);
+    height: 500px;
+    width: 60%;
+    border-radius: 20px;
+    padding-left: 20px;
+    z-index: 100;
+}
+
+.my-skills .panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang {
+    height: 180px;
+    margin-right: 30px;
+}
+
+.lang:hover {
+    transform: scale(0.90);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.projects .panel {
+    display: flex;
+}
+
+.projectCard {
+    height: 45%;
+    width: 15%;
+    margin-top: 20px;
+    margin-right: 10px;
+    border: solid;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.container {
+    vertical-align: top;
+}
+
+.thumbnail {
+    width: 100%;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    margin-top: -15px;
+}
+
+.viewBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.view {
+    width: 80px;
+    margin-bottom: 10px;
+    background-color: rgb(69, 188, 228);
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.view:hover {
+    background-color: white;
+    color: rgb(69, 188, 228);
+}
